@@ -1,5 +1,5 @@
 // creates an appropriate history object for client or server side
-import history from 'history';
+import * as history from 'history';
 import { canUseDOM } from 'history/lib/ExecutionEnvironment';
 
 export const createHistory = (url = '/') => {

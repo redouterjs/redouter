@@ -1,5 +1,5 @@
 /* global describe it */
-import { universal, server } from './lib/index';
+import { universal, server } from './src/index';
 import assert from 'assert';
 
 describe('universal', () => {
@@ -7,6 +7,14 @@ describe('universal', () => {
 	describe('history', () => {
 		it('should have the createHistory function', () => {
 			assert(typeof universal.createHistory === 'function');
+		});
+
+		it('should correctly create a server-side history', () => {
+			const history = universal.createHistory('/pineapple');
+
+			history.listen( ({pathname}) => {
+				assert(pathname === '/pineapple');
+			});
 		});
 	});
 
