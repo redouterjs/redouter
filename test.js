@@ -1,27 +1,38 @@
-import main from './lib/index';
+/* global describe it */
+import { universal, server } from './lib/index';
 import assert from 'assert';
 
 describe('universal', () => {
+
 	describe('history', () => {
-		it('should load', () => {
-			const history = main.history;
-			assert(typeof history === 'function');
+		it('should have the createHistory function', () => {
+			assert(typeof universal.createHistory === 'function');
 		});
 	});
 
 	describe('react-router', () => {
-		it('should load', () => {
-			const reactRouter = main.reactRouter;
-			assert(typeof reactRouter === 'function');
+		it('should have the createRouterComponent function', () => {
+			assert(typeof universal.createRouterComponent === 'function');
 		});
-	})
+	});
 
-	describe('redux', () => {
-		it('should load', () => {
-			const redux = main.redux;
-			assert(typeof redux.reduxify === 'function');
-			assert(typeof redux.createStore === 'function');
-			assert(typeof redux.render === 'function');
+	describe('react-redux', () => {
+		it('should have the render and createStore functions', () => {
+			assert(typeof universal.render === 'function');
+			assert(typeof universal.createStore === 'function');
+		})
+	});
+
+	describe('route-action', () => {
+		it('should have the correct route type constant and create function', () => {
+			assert(universal.routeActions.ROUTE_TYPE === '@@redouter/ROUTE');
+			assert(typeof universal.routeActions.create === 'function');
 		})
 	})
 });
+
+describe('redouter', () => {
+	it('should have a redouter function', () => {
+		assert(typeof server.redouter === 'function');
+	});
+})

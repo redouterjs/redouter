@@ -41,7 +41,7 @@ class NotFoundError extends Error {
 }
 
 // because the server side "match" uses async style, we are forced to do the same here
-export default (routes, history, cb) => {
+export const createRouterComponent = (routes, history, cb) => {
 	if (canUseDOM) {
 		// return a simple router object
 		try {

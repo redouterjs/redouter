@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "no-undef": 2,
+    "no-unused-vars": [2, {"vars": "all", "args": "after-used", "varsIgnorePattern": "React"}]
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "ecmaFeatures": { 
+    "modules": true,
+    "jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "React": true
+  }
+}

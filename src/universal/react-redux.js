@@ -7,8 +7,9 @@ import { renderToString } from 'react-dom/server';
 import { canUseDOM } from 'history/lib/ExecutionEnvironment';
 
 const reduxify = (component, store) => <Provider store={store}>{component}</Provider>;
-const createStore = ({ reducer, initialState }, ...middlewares) => redux.applyMiddleware(...middlewares)(redux.createStore)(reducer, initialState);
-const render = (Component, store, targetDOMElement) => {
+
+export const createStore = ({ reducer, initialState }, ...middlewares) => redux.applyMiddleware(...middlewares)(redux.createStore)(reducer, initialState);
+export const render = (Component, store, targetDOMElement) => {
 	const FinalComponent = reduxify(Component, store);
 
 	if (canUseDOM) {
@@ -20,9 +21,4 @@ const render = (Component, store, targetDOMElement) => {
 	} else {
 		return renderToString(FinalComponent);
 	}
-
 };
-
-export default {
-	reduxify, createStore, render
-}
