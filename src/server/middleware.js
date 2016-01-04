@@ -72,7 +72,7 @@ export default ({ rootReducer, initialState, routes, templater = defaultTemplate
 
 	res.universalRender = () => {
 		// the last action must be a route action
-		if (isRouteAction(actionQueue.slice(-1)[0])) {
+		if (!isRouteAction(actionQueue.slice(-1)[0])) {
 			actionQueue.push(finish(req, res));
 		}
 
