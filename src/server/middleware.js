@@ -1,5 +1,6 @@
 import { universal } from '../index';
-import { reqAsAction, finish, redirect, isRouteAction } from './actions';
+import { reqAsAction, finish, redirect } from './actions';
+import { isRouteAction } from 'route-action';
 import log from '../extras/log';
 
 // the whole __INITIAL_STATE__ thing is from https://goo.gl/bOrXPH

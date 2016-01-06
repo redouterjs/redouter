@@ -31,12 +31,6 @@ describe('universal', () => {
 		})
 	});
 
-	describe('route-action', () => {
-		it('should have the correct route type constant and create function', () => {
-			assert(universal.routeActions.ROUTE_TYPE === '@@redouter/ROUTE');
-			assert(typeof universal.routeActions.create === 'function');
-		})
-	})
 });
 
 describe('redouter', () => {

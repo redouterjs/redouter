@@ -42,6 +42,7 @@
     "redux": "^3"
   },
   "dependencies": {
-    "js-beautify": "^1.5.10"
+    "js-beautify": "^1.5.10",
+    "route-action": "^1.0.0"
   }
 }

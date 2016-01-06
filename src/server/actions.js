@@ -1,4 +1,4 @@
-import { universal } from '../index';
+import { create } from 'route-action';
 
 export const reqAsAction = req => {
 
@@ -7,7 +7,7 @@ export const reqAsAction = req => {
 
 	// Note that we force the url and method to match the 
 	// actual HTTP url and method to prevent possible abuse.
-	return universal.routeActions.create({
+	return create({
 		url: req.originalUrl,
 		method: req.method,
 		body: reqAction.body || {},
@@ -31,5 +31,3 @@ export const redirect = (req, location) => {
 	action.headers.location = location;
 	return action;
 };
-
-export const isRouteAction = obj => obj && obj.type === universal.routeActions.ROUTE_TYPE;
