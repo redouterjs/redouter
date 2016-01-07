@@ -36,12 +36,6 @@ This module provides code that is environment agnostic. Most of it is specific t
   * For browser rendering, `targetDOMElement` is required, and an error is thrown if not present.
   * For server rendering, `targetDOMElement` is ignored.
 
-* `routeActions.ROUTE_TYPE` = `@@redouter/ROUTE` (simple constant)
-
-* `routeActions.create({url, method, body, headers})`
-
-  Creates a route action with the given parameters and the `@@redouter/ROUTE` type.
-
 # server
 
 ```
@@ -88,4 +82,6 @@ return `
   * React content is rendered in the `#react-container` element in the `body`
   * The global `__INITIAL_STATE__` provides hydration capabilities.
   * It is assumed that a client-side hook is present at `js/bundle.js`.
+
+* client
 

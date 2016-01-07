@@ -1,5 +1,5 @@
 /* global describe it */
-import { universal, server } from './src/index';
+import { universal, server, client } from './src/index';
 import assert from 'assert';
 
 describe('universal', () => {
@@ -33,8 +33,20 @@ describe('universal', () => {
 
 });
 
-describe('redouter', () => {
+describe('server', () => {
 	it('should have a redouter function', () => {
 		assert(typeof server.redouter === 'function');
 	});
-})
+});
+
+describe('client', () => {
+	it('should have a requestRedux middleware', () => {
+		assert(typeof client.requestRedux === 'function');
+		assert(client.requestRedux.length === 1);
+	});
+
+	it ('should have a routeTrigger function', () => {
+		assert(typeof client.requestRedux === 'function');
+		assert(client.routeTrigger.length === 2);
+	});
+});
