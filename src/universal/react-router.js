@@ -41,11 +41,17 @@ class NotFoundError extends Error {
 }
 
 // because the server side "match" uses async style, we are forced to do the same here
-export const createRouterComponent = (routes, history, cb) => {
+export const createRouterComponent = (routes, { history, createElement }, cb) => {
+	if (!history) {
+		cb(new Error('You must provide a "createHistory" factory function'));
+	} else if (!history.__v2_compatible__) {
+		cb(new Error('Please provide a history compatible with react-router 2.x by wrapping the factory function with useRouterHistory'));
+	}
+
 	if (canUseDOM) {
 		// return a simple router object
 		try {
-			cb(null, <Router history={history}>{routes}</Router>);
+			cb(null, <Router createElement={createElement} history={history}>{routes}</Router>);
 		} catch (err) {
 			cb(err);
 		}
@@ -61,6 +67,7 @@ export const createRouterComponent = (routes, history, cb) => {
 				} else if (renderProps == null) {
 					return cb(new NotFoundError());
 				} else {
+					renderProps.createElement = createElement;
 					cb(null, <RouterContext {...renderProps} />);
 				}
 			});

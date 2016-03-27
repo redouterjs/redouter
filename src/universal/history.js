@@ -1,11 +1,16 @@
 // creates an appropriate history object for client or server side
 import * as history from 'history';
 import { canUseDOM } from 'history/lib/ExecutionEnvironment';
+import { useRouterHistory } from 'react-router'; // this pollution is unfortunate but necessary
 
-export const createHistory = (url = '/') => {
+export const createHistory = options => {
 	if (canUseDOM) {
-		return history.createHistory(); // ignore the given url, let the browser url determine this
+		return useRouterHistory(history.createHistory)(options); 
 	} else {
-		return history.createMemoryHistory([url]);
+		// the server-side must start with an initial URL to begin rendering
+		if (!options.entries) {
+			options.entries = ['/'];
+		}
+		return useRouterHistory(history.createMemoryHistory)(options);
 	}
 }

@@ -17,12 +17,12 @@ const defaultTemplater = (html, store) => {
 }
 
 // TODO: at some point, we may want to add the concept of a custom renderer. Maybe.
-const serverRenderer = ({ store, routes, templater }, req, res) => {
+const serverRenderer = ({ store, routes, templater, createElement }, req, res) => {
 
 	// there is no need to expose the history, because this is server-side,
 	// which needs the history for exactly one purpose - rendering
-	const history = universal.createHistory(req.originalUrl);
-	universal.createRouterComponent(routes, history, (err, Component) => {
+	const history = universal.createHistory({ entries: [ req.originalUrl ]});
+	universal.createRouterComponent(routes, { history, createElement }, (err, Component) => {
 		if (err) {
 			if (err.statusCode) {
 				res.status(err.statusCode)

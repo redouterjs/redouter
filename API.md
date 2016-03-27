@@ -11,11 +11,13 @@ This module provides code that is environment agnostic. Most of it is specific t
 [u2]: https://github.com/rackt/react-redux
 [u3]: https://github.com/rackt/react-router
 
-* `createHistory(url='/')`
+* `createHistory(options)`
 
-  Automatically creates the appropriate `history` object for the server or the browser. If the browser is the environment, then the `url` parameter is ignored.
+  Automatically creates the appropriate `history` object for the server or the browser.
 
-* `createRouterComponent(routes, history, cb)`
+  The history object generated is decorated to work specifically with `react-router` v2.x. For server-side use, `options` should include an `entries` array property one one element, indicating the route the server is rendering.
+
+* `createRouterComponent(routes, { history, createElement }, cb)`
 
   Generates a React component representing the `react-router` root component, tailored to server or browser. The function is asynchronous because the server-side call is asynchronous as well. For server-side rendering, 3 custom errors can be generated via callback. All errors will have a `statusCode` property, and may contain additional properties
 
@@ -24,6 +26,10 @@ This module provides code that is environment agnostic. Most of it is specific t
   * `NotFoundError`
 
   Calling code must handle the errors manually, probably by generating the appropriate `res` response.
+
+  NOTE: Due to changes in react-router 2.x, and also to provide more customizability of the generated Router component, the second argument is now an object. `history` must have been decorated by `useRouterHistory` (just use `createHistory` above to keep things simple), and `createElement` is an optional argument that goes into the `<Router>` or `<RouterContext>` `createElement`prop.
+
+  WARN: Since we are not passing an options object as described in the `useRouterHistory` API for 2.x, this may not work properly (for now).
 
 * `createStore({ reducer, initialState }, ...middlewares)`
 
