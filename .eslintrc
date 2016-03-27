@@ -1,16 +1,21 @@
 {
+  "parser": "babel-eslint",
   "rules": {
     "no-undef": 2,
-    "no-unused-vars": [2, {"vars": "all", "args": "after-used", "varsIgnorePattern": "React"}]
+    "no-unused-vars": 2,
+    "react/jsx-uses-vars": 2
   },
   "env": {
     "node": true,
     "es6": true
   },
-  "ecmaFeatures": { 
-    "modules": true,
-    "jsx": true,
-    "experimentalObjectRestSpread": true
+  "parserOptions": {
+    "ecmaFeatures": { 
+      "modules": true,
+      "jsx": true,
+      "experimentalObjectRestSpread": true,
+      "forOf": true
+    }
   },
   "plugins": [
     "react"

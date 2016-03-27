@@ -13,8 +13,8 @@
 //
 // Again, please note that server-side, you must create a history
 // object with a manually defined URL.
-import React from 'react';
-import { Router, RoutingContext, match } from 'react-router';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import { Router, RouterContext, match } from 'react-router';
 import { canUseDOM } from 'history/lib/ExecutionEnvironment';
 
 class RedirectError extends Error {
@@ -61,7 +61,7 @@ export const createRouterComponent = (routes, history, cb) => {
 				} else if (renderProps == null) {
 					return cb(new NotFoundError());
 				} else {
-					cb(null, <RoutingContext {...renderProps} />);
+					cb(null, <RouterContext {...renderProps} />);
 				}
 			});
 		});

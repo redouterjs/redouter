@@ -1,7 +1,7 @@
 // this file provides redux-specific functionality
 import { Provider } from 'react-redux';
 import * as redux from 'redux';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom';
 import { renderToString } from 'react-dom/server';
 import { canUseDOM } from 'history/lib/ExecutionEnvironment';
