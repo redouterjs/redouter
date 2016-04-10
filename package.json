@@ -30,25 +30,25 @@
     "babel-preset-stage-0": "^6",
     "history": "^2",
     "mocha": "^2.3.4",
-    "react": "^0.14",
-    "react-dom": "^0.14",
+    "react": "^15",
+    "react-dom": "^15",
     "react-redux": "^4",
     "react-router": "^2",
     "redux": "^3"
   },
   "peerDependencies": {
     "history": "^2",
-    "react": "^0.14",
+    "react": "^15",
     "react-redux": "^4",
     "react-router": "^2",
-    "react-dom": "^0.14",
+    "react-dom": "^15",
     "redux": "^3"
   },
   "dependencies": {
     "babel-runtime": "^6",
     "es6-promise": "^3.0.2",
     "isomorphic-fetch": "^2.2.0",
-    "js-beautify": "^1.5.10",
+    "js-beautify": "^1.6",
     "route-action": "^1.0.0"
   }
 }
