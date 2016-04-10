@@ -1,6 +1,6 @@
 {
   "name": "redouter",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "redouter is a library of functions an opinion of how to integrate React, redux and react-router to generate universal web applications",
   "main": "lib/index.js",
   "scripts": {
