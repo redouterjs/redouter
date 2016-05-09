@@ -6,7 +6,7 @@ const { GET } = helpers;
 export default (history, store) => {
 	let initialLoad = true; // messy? prevents redundant fetch on first load.
 	history.listen(location => {
-		const url = location.pathname;
+		const url = location.pathname + location.search;
 		console.log(`[trigger route-action] ${url}`);
 		if (initialLoad) {
 			initialLoad = false;
