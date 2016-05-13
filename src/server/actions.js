@@ -10,7 +10,7 @@ export const reqAsAction = req => {
 	return create({
 		url: req.originalUrl,
 		method: req.method,
-		body: reqAction.body || {},
+		body: reqAction.body || req.body || {}, // TODO: Think about this. Why even have a req.action.body? should transparently be req.body to the controller.
 		headers: reqAction.headers
 	});
 };
